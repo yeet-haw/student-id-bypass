@@ -22,25 +22,25 @@ import iconBar5 from '../Resources/Images/icon-bar5.png';
 // maybe using roboto and san francisco
 // font maybe already default front index.css file
 
-const Overlay = ({ image, opacity }: { image: string; opacity: number }) => {
-    const styles = StyleSheet.create({
-        wrapper: {
-            position: 'absolute',
-            opacity,
-            ...Theme.addOn.fullSize,
-        },
-        image: {
-            ...Theme.addOn.fullSize,
-            objectFit: 'cover',
-        },
-    });
+// const Overlay = ({ image, opacity }: { image: string; opacity: number }) => {
+//     const styles = StyleSheet.create({
+//         wrapper: {
+//             position: 'absolute',
+//             opacity,
+//             ...Theme.addOn.fullSize,
+//         },
+//         image: {
+//             ...Theme.addOn.fullSize,
+//             objectFit: 'cover',
+//         },
+//     });
 
-    return (
-        <div className={css(styles.wrapper)}>
-            <img className={css(styles.image)} src={image} alt='' />
-        </div>
-    );
-};
+//     return (
+//         <div className={css(styles.wrapper)}>
+//             <img className={css(styles.image)} src={image} alt='' />
+//         </div>
+//     );
+// };
 
 const StudentId = () => {
     useEffect(() => {
