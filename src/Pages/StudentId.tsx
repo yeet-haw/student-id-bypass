@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import Barcode from 'react-barcode';
 
-import { changeThemeColor } from '../Utilties';
+import { changeThemeColor, getPHXTime } from '../Utilties';
 import Theme from '../Styles/Theme';
 import GCUBanner from '../Resources/Images/gcu-banner.png';
 import ActivityIcon from '../Resources/Images/activity-icon.png';
@@ -21,26 +21,6 @@ import iconBar5 from '../Resources/Images/icon-bar5.png';
 // perhaps using default font on device
 // maybe using roboto and san francisco
 // font maybe already default front index.css file
-
-// const Overlay = ({ image, opacity }: { image: string; opacity: number }) => {
-//     const styles = StyleSheet.create({
-//         wrapper: {
-//             position: 'absolute',
-//             opacity,
-//             ...Theme.addOn.fullSize,
-//         },
-//         image: {
-//             ...Theme.addOn.fullSize,
-//             objectFit: 'cover',
-//         },
-//     });
-
-//     return (
-//         <div className={css(styles.wrapper)}>
-//             <img className={css(styles.image)} src={image} alt='' />
-//         </div>
-//     );
-// };
 
 const StudentId = () => {
     useEffect(() => {
@@ -114,7 +94,9 @@ const IDCard = ({
             overflow: 'hidden',
         },
         topBanner: {
-            height: 80,
+            // height: 80,
+            flexBasis: 80,
+            flexShrink: 0,
             width: '100%',
             background: 'linear-gradient(to right, #450966, #532496)',
             ...(Theme.addOn.centerContainer as any),
@@ -179,6 +161,7 @@ const IDCard = ({
             position: 'relative',
             left: '50%',
             transform: 'translateX(-50%)',
+            height: 0,
         },
         profileImage: {
             height: '100%',
@@ -258,7 +241,9 @@ const IDCard = ({
             animationIterationCount: 'infinite',
         },
         bottomBanner: {
-            height: 80,
+            // height: 80,
+            flexBasis: 80,
+            flexShrink: 0,
             width: '100%',
             background: 'linear-gradient(to right, #450966, #532496)',
             ...(Theme.addOn.centerContainer as any),
@@ -275,6 +260,34 @@ const IDCard = ({
 
     const name = useSelector((state: State) => state.name);
 
+    const [timeCreated, setTimeCreated] = useState(getPHXTime(new Date()));
+
+    useEffect(() => {
+        console.log('hi');
+        const timer = setInterval(
+            () => setTimeCreated(getPHXTime(new Date())),
+            5000
+        );
+        return () => clearInterval(timer);
+    }, []);
+    console.log(timeCreated);
+    let dateOutput = timeCreated.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        // hour: 'numeric',
+        // minute: '2-digit',
+    });
+    let timeOutput = timeCreated.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+    });
+    if (timeOutput.endsWith('AM') || timeOutput.endsWith('PM')) {
+        timeOutput =
+            timeOutput.substring(0, timeOutput.length - 3) +
+            timeOutput.substring(timeOutput.length - 2).toLowerCase();
+    }
+    const dateTimeOutput = dateOutput + ', ' + timeOutput;
     return (
         <div className={css(styles.wrapper)}>
             <div className={css(styles.topBanner)}>
@@ -352,7 +365,7 @@ const IDCard = ({
                     Last updated:
                 </div>
                 <div className={css(styles.bottomBannerTime)}>
-                    November 25, 2020, 8:16pm
+                    {dateTimeOutput}
                 </div>
             </div>
         </div>
@@ -374,7 +387,7 @@ const Navigation = () => {
         },
         barImageWrap: {
             height: '100%',
-            width: 40,
+            width: 49,
         },
         iconBar: {
             ...Theme.addOn.fullSize,
