@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Pages/Home';
-import EngageId from './Pages/EngageId';
 import StudentId from './Pages/StudentId';
-import { isIOS } from './Utilties';
+// import { isIOS } from './Utilties';
 
 const App = () => (
     <Router>
@@ -15,9 +14,6 @@ const App = () => (
             <Switch>
                 <Route path='/studentId'>
                     <StudentId />
-                </Route>
-                <Route path='/engageId'>
-                    <EngageId ios={isIOS()} />
                 </Route>
                 <Route path='/'>
                     <Home />

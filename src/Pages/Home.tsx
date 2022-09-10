@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import Theme from '../Styles/Theme';
 import { actions, State } from '../Redux';
 import { useDispatch, useSelector } from 'react-redux';
-import gcuEngageLogo from '../Resources/Images/gcu-engage-app.png';
 import gcuStudentLogo from '../Resources/Images/gcu-student-app.png';
 import { useHistory } from 'react-router-dom';
-import { changeThemeColor } from '../Utilties';
+import { changeThemeColor } from '../Utilities';
 
 enum InputType {
     Text,
@@ -40,9 +39,7 @@ const Home = () => {
         (state: State) => state.studentId
     );
 
-    useEffect(() => {
-        changeThemeColor(Theme.color.primary);
-    }, []);
+    useEffect(() => changeThemeColor(Theme.color.primary), []);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -76,10 +73,7 @@ const Home = () => {
                     />
                 </div>
                 <div style={{ flex: 1 }} />
-                <PageSelect
-                    onEngageClick={() => history.push('/engageId')}
-                    onStudentClick={() => history.push('/studentId')}
-                />
+                <PageSelect onStudentClick={() => history.push('/studentId')} />
             </div>
         </div>
     );
@@ -115,19 +109,20 @@ const ImageInput = ({
     image?: string | undefined;
     selfSetImage?: boolean;
 }) => {
-    const inputRef = React.useRef(null);
-    const uploadedImage = React.useRef(null);
-    const handleImageUpload = (e: any) => {
-        const [file] = e.target.files;
+    const inputRef = React.useRef<HTMLInputElement>(null);
+    const uploadedImage = React.useRef<HTMLImageElement & { file: any }>(null);
+    const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+        const [file] = e.target.files ?? [];
         if (file) {
             const reader = new FileReader();
-            reader.onload = (e: any) => {
-                if (onUpload) onUpload(e.target.result);
+            reader.onload = (e: ProgressEvent<FileReader>) => {
+                if (!e?.target?.result) return;
+                if (onUpload) onUpload(e.target.result as string);
                 if (!selfSetImage) return;
-                const { current }: { current: any } = uploadedImage;
+                const { current } = uploadedImage;
                 if (!current) return;
                 current.file = file;
-                current.src = e.target.result;
+                current.src = e.target.result as string;
             };
             reader.readAsDataURL(file);
         }
@@ -137,8 +132,7 @@ const ImageInput = ({
         container: {
             ...Theme.addOn.boxShadow.mediumLight,
             ...Theme.addOn.borderRadius.mediumLight,
-            display: 'flex',
-            flexDirection: 'column',
+            ...Theme.addOn.flexCol,
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '6px 0',
@@ -176,7 +170,7 @@ const ImageInput = ({
             />
             <div
                 className={css(styles.imageWrapper)}
-                onClick={() => (inputRef!.current as any).click()}
+                onClick={() => inputRef.current?.click()}
             >
                 <img
                     ref={uploadedImage}
@@ -270,13 +264,7 @@ const Input = ({
     );
 };
 
-const PageSelect = ({
-    onEngageClick,
-    onStudentClick,
-}: {
-    onEngageClick?: () => void;
-    onStudentClick?: () => void;
-}) => {
+const PageSelect = ({ onStudentClick }: { onStudentClick?: () => void }) => {
     const styles = StyleSheet.create({
         wrapper: {
             height: 80,
@@ -286,7 +274,7 @@ const PageSelect = ({
         },
         container: {
             height: '100%',
-            width: 170,
+            width: 'auto',
             background: Theme.color.white,
             color: '#fff',
             fontSize: '1.2em',
@@ -315,16 +303,6 @@ const PageSelect = ({
     return (
         <div className={css(styles.wrapper)}>
             <div className={css(styles.container)}>
-                <div
-                    className={css(styles.imageWrapper)}
-                    onClick={onEngageClick}
-                >
-                    <img
-                        className={css(styles.image)}
-                        src={gcuEngageLogo}
-                        alt='GCU Engage Logo'
-                    />
-                </div>
                 <div
                     className={css(styles.imageWrapper)}
                     onClick={onStudentClick}

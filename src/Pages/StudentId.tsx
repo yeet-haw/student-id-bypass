@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import Barcode from 'react-barcode';
 
-import { changeThemeColor, getPHXTime } from '../Utilties';
+import { changeThemeColor, getPHXTime } from '../Utilities';
 import Theme from '../Styles/Theme';
 import GCUBanner from '../Resources/Images/gcu-banner.png';
 import ActivityIcon from '../Resources/Images/activity-icon.png';
@@ -59,7 +59,7 @@ const Header = () => {
             height: 70,
             width: '100%',
             background: 'linear-gradient(to right, #450966, #532496)',
-            ...(Theme.addOn.centerContainer as any),
+            ...Theme.addOn.centerContainer,
         },
         title: {
             width: 86.5,
@@ -99,7 +99,7 @@ const IDCard = ({
             flexShrink: 0,
             width: '100%',
             background: 'linear-gradient(to right, #450966, #532496)',
-            ...(Theme.addOn.centerContainer as any),
+            ...Theme.addOn.centerContainer,
         },
         topBannerImageWrapper: {
             height: 40,
@@ -119,7 +119,7 @@ const IDCard = ({
             background: '#C8E6C9',
             color: '#20691C',
             height: 47,
-            ...(Theme.addOn.centerContainer as any),
+            ...Theme.addOn.centerContainer,
         },
         activityFeeContent: {
             height: 16,
@@ -151,7 +151,7 @@ const IDCard = ({
             objectFit: 'contain',
         },
         profileImageWrapper: {
-            ...(Theme.addOn.centerContainer as any),
+            ...Theme.addOn.centerContainer,
             flex: 1,
             marginBottom: 5,
             // padding: '0 42px',
@@ -181,7 +181,7 @@ const IDCard = ({
             marginTop: 9,
             background: '#FF6A00',
             color: '#fff',
-            ...(Theme.addOn.centerContainer as any),
+            ...Theme.addOn.centerContainer,
             ...Theme.addOn.borderRadius.light,
             width: 86,
             height: 30,
@@ -246,7 +246,7 @@ const IDCard = ({
             flexShrink: 0,
             width: '100%',
             background: 'linear-gradient(to right, #450966, #532496)',
-            ...(Theme.addOn.centerContainer as any),
+            ...Theme.addOn.centerContainer,
         },
         bottomBannerLastUpdated: {
             fontStyle: 'oblique',
@@ -263,20 +263,16 @@ const IDCard = ({
     const [timeCreated, setTimeCreated] = useState(getPHXTime(new Date()));
 
     useEffect(() => {
-        console.log('hi');
         const timer = setInterval(
             () => setTimeCreated(getPHXTime(new Date())),
             5000
         );
         return () => clearInterval(timer);
     }, []);
-    console.log(timeCreated);
     let dateOutput = timeCreated.toLocaleDateString('en-US', {
         month: 'long',
         day: 'numeric',
         year: 'numeric',
-        // hour: 'numeric',
-        // minute: '2-digit',
     });
     let timeOutput = timeCreated.toLocaleTimeString('en-US', {
         hour: 'numeric',

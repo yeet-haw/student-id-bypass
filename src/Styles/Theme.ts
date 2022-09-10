@@ -1,5 +1,9 @@
 const Theme = {
     addOn: {
+        flexCol: {
+            display: 'flex',
+            flexDirection: 'column',
+        },
         fullSize: {
             width: '100%',
             height: '100%',
@@ -63,10 +67,8 @@ const Theme = {
 
         white: '#ffffff',
 
-        engageGreen: '#3dc292',
-        engageTheme: '#371765',
         studentTheme: '#4c4c4c',
     },
-};
+} as const;
 
 export default Theme;
