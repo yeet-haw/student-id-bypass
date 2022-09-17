@@ -7,6 +7,8 @@ import Theme from '../Styles/Theme';
 import GCUBanner from '../Resources/Images/gcu-banner.png';
 import ActivityIcon from '../Resources/Images/activity-icon.png';
 import RefreshIcon from '../Resources/Images/refresh-icon.png';
+// import longA from '../Resources/Images/SECRET/long-a.jpg';
+// import mediumA from '../Resources/Images/SECRET/medium-a.png';
 import { useSelector } from 'react-redux';
 import { State } from '../Redux';
 
@@ -33,6 +35,7 @@ const StudentId = () => {
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
+            overflow: 'hidden',
         },
     });
 
@@ -41,14 +44,57 @@ const StudentId = () => {
 
     return (
         <>
-            <div className={css(styles.wrapper)}>
+            <div
+                className={css(styles.wrapper)}
+                style={{ position: 'absolute' }}
+            >
                 <Header />
                 <IDCard
-                    image={image ? image : undefined}
-                    studentId={studentId ? studentId : undefined}
+                    image={image ?? undefined}
+                    studentId={studentId ?? undefined}
                 />
                 <Navigation />
             </div>
+            {/* <div
+                style={{
+                    // opacity: 0,
+                    display: 'none',
+                    ...Theme.addOn.fullSize,
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                }}
+            >
+                <img
+                    src={longA}
+                    alt=''
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'fill',
+                    }}
+                />
+            </div>
+            <div
+                style={{
+                    // opacity: 0,
+                    display: 'none',
+                    ...Theme.addOn.fullSize,
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                }}
+            >
+                <img
+                    src={mediumA}
+                    alt=''
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'fill',
+                    }}
+                />
+            </div> */}
         </>
     );
 };
@@ -66,6 +112,7 @@ const Header = () => {
             color: '#fff',
             fontWeight: 500,
             fontSize: '1.12em',
+            textAlign: 'center',
         },
     });
 
@@ -88,14 +135,14 @@ const IDCard = ({
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
-            margin: '18px 15px', // not confirmed
+            margin: '14px 15px', // not confirmed
             ...Theme.addOn.boxShadow.medium,
             ...Theme.addOn.borderRadius.mediumStrong,
             overflow: 'hidden',
         },
         topBanner: {
             // height: 80,
-            flexBasis: 80,
+            flexBasis: 75,
             flexShrink: 0,
             width: '100%',
             background: 'linear-gradient(to right, #450966, #532496)',
@@ -124,11 +171,13 @@ const IDCard = ({
         activityFeeContent: {
             height: 16,
             display: 'flex',
+            alignItems: 'center',
         },
         activityFeeIconWrapper: {
             height: 16,
             width: 16,
             marginRight: 6,
+            display: 'flex',
         },
         activityFeeIcon: {
             ...Theme.addOn.fullSize,
@@ -242,7 +291,7 @@ const IDCard = ({
         },
         bottomBanner: {
             // height: 80,
-            flexBasis: 80,
+            flexBasis: 75,
             flexShrink: 0,
             width: '100%',
             background: 'linear-gradient(to right, #450966, #532496)',
