@@ -1,6 +1,7 @@
 {
     "short_name": "GCU ID Bypass",
     "name": "Grand Canyon University ID Bypass",
+    "scope": "https://yeet-haw.github.io/student-id-bypass/",
     "icons": [
         {
             "src": "favicon.ico",
@@ -19,7 +20,7 @@
         }
     ],
     "start_url": ".",
-    "display": "standalone",
+    "display": "minimal-ui",
     "theme_color": "#5e35b1",
     "background_color": "#ffffff"
 }

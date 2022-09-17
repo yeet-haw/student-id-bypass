@@ -1,25 +1,22 @@
 {
   "files": {
-    "main.css": "/student-id-bypass/static/css/main.c0532c0e.chunk.css",
-    "main.js": "/student-id-bypass/static/js/main.5d6d0bb9.chunk.js",
-    "main.js.map": "/student-id-bypass/static/js/main.5d6d0bb9.chunk.js.map",
-    "runtime-main.js": "/student-id-bypass/static/js/runtime-main.274884be.js",
-    "runtime-main.js.map": "/student-id-bypass/static/js/runtime-main.274884be.js.map",
-    "static/js/2.c14ef772.chunk.js": "/student-id-bypass/static/js/2.c14ef772.chunk.js",
-    "static/js/2.c14ef772.chunk.js.map": "/student-id-bypass/static/js/2.c14ef772.chunk.js.map",
-    "static/js/3.80b0e017.chunk.js": "/student-id-bypass/static/js/3.80b0e017.chunk.js",
-    "static/js/3.80b0e017.chunk.js.map": "/student-id-bypass/static/js/3.80b0e017.chunk.js.map",
+    "main.css": "/student-id-bypass/static/css/main.7da82c85.chunk.css",
+    "main.js": "/student-id-bypass/static/js/main.e96fe7e3.chunk.js",
+    "main.js.map": "/student-id-bypass/static/js/main.e96fe7e3.chunk.js.map",
+    "runtime-main.js": "/student-id-bypass/static/js/runtime-main.8ef16304.js",
+    "runtime-main.js.map": "/student-id-bypass/static/js/runtime-main.8ef16304.js.map",
+    "static/js/2.2d1f2400.chunk.js": "/student-id-bypass/static/js/2.2d1f2400.chunk.js",
+    "static/js/2.2d1f2400.chunk.js.map": "/student-id-bypass/static/js/2.2d1f2400.chunk.js.map",
     "index.html": "/student-id-bypass/index.html",
-    "static/css/main.c0532c0e.chunk.css.map": "/student-id-bypass/static/css/main.c0532c0e.chunk.css.map",
-    "static/js/2.c14ef772.chunk.js.LICENSE.txt": "/student-id-bypass/static/js/2.c14ef772.chunk.js.LICENSE.txt",
+    "static/css/main.7da82c85.chunk.css.map": "/student-id-bypass/static/css/main.7da82c85.chunk.css.map",
+    "static/js/2.2d1f2400.chunk.js.LICENSE.txt": "/student-id-bypass/static/js/2.2d1f2400.chunk.js.LICENSE.txt",
     "static/media/gcu-banner.b4edfb2a.png": "/student-id-bypass/static/media/gcu-banner.b4edfb2a.png",
-    "static/media/gcu-engage-app.892524f2.png": "/student-id-bypass/static/media/gcu-engage-app.892524f2.png",
     "static/media/gcu-student-app.d0656f93.png": "/student-id-bypass/static/media/gcu-student-app.d0656f93.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.274884be.js",
-    "static/js/2.c14ef772.chunk.js",
-    "static/css/main.c0532c0e.chunk.css",
-    "static/js/main.5d6d0bb9.chunk.js"
+    "static/js/runtime-main.8ef16304.js",
+    "static/js/2.2d1f2400.chunk.js",
+    "static/css/main.7da82c85.chunk.css",
+    "static/js/main.e96fe7e3.chunk.js"
   ]
 }
